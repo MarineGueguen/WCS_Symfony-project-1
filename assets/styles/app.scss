@@ -1,0 +1,48 @@
+// assets/styles/app.scss
+
+// customize some Bootstrap variables
+// $primary: #9473AE;
+// $danger: #541E7E;
+
+// the ~ allows you to reference things in node_modules
+@import "~bootstrap/scss/bootstrap";
+
+:root {
+    --main-bg-color: #F6F2FA;
+    --primary-color: #9473AE;
+    --secondary-color: #541E7E;
+    --text-dark: #2D2C2E;
+    --text-light: #A29EA6;
+}
+
+body {
+    background-color: var(--main-bg-color);
+    font-family: 'Roboto', sans-serif;
+    font-size: 20px;
+}
+
+.navbar a:hover {
+    color: var(--secondary-color);
+}
+
+.bg-navbar {
+    background-color: var(--primary-color);
+}
+
+.navlink {
+    text-decoration: none;
+    margin: 0px 5px 0px 5px;
+    color: var(--main-bg-color);
+    font-family: 'Roboto Condensed', sans-serif;
+    font-weight: 400;
+}
+
+
+.logo {
+    font-family: 'Roboto Condensed', sans-serif;
+    font-size: 50px;
+    color: var(--main-bg-color);
+    text-decoration: none;
+    font-weight: 700;
+    font-style: italic;
+}
