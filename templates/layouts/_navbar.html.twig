@@ -1,29 +1,28 @@
-<nav class="navbar navbar-expand-lg bg-light">
-    <div class="container-fluid">
-        <div class="col-md-1">
-            <a class="navbar-brand" href="#">Wildseries</a>
-        </div>
-        <div class="col-md-8 col-lg-6">
-            <ul class="d-flex justify-content-evenly my-auto">
+<nav class="navbar">
+    <div class="container-fluid nav-bar">
+        <div class="col-lg-8 d-flex justify-content-start navigation">
+            <div class="col-md-3 col-xs-2 logo">
+                <a class="navbar-brand logo-brand" href="#">Wildseries</a>
+            </div>
+            <ul class="d-flex justify-xs-content-start justify-md-content-end my-auto navigation">
                 <li class="nav-item">
-                    <a class="nav-link" href="#">Series</a>
+                    <a class="nav-link" href="#"><img class="icon" src="{{ asset('build/images/home-dark.svg') }}"><span class="nav-category">Home</span></a>
                 </li>
                 <li class="nav-item">
-                    <a class="nav-link" href="#">Actors</a>
+                    <a class="nav-link" href="#"><img class="icon" src="{{ asset('build/images/movies-dark.svg') }}"><span class="nav-category">Series</span></a>
                 </li>
-                <form class="d-flex" role="search">
-                    <input class="form-control me-2" type="search" placeholder="Search" aria-label="Search">
-                    <button class="btn btn-outline-success" type="submit">Search</button>
-                </form>
+                <li class="nav-item">
+                    <a class="nav-link" href="#"><img class="icon" src="{{ asset('build/images/actors-dark.png') }}"><span class="nav-category">Actors</span></a>
+                </li>
             </ul>
         </div>
-        <div class="col-md-3 col-lg-2">
-            <ul class="d-flex justify-content-between my-auto">
+        <div class="col-md-3">
+            <ul class="d-md-flex justify-content-end my-auto">
                 <li class="nav-item">
-                    <a class="nav-link" href="#">Login</a>
+                    <a class="nav-link" href="#"><img class="icon user-log" src="{{ asset('build/images/login-dark.png') }}"><span class="login">Login</span></a>
                 </li>
                 <li class="nav-item">
-                    <a class="nav-link" href="#">Register</a>
+                    <a class="nav-link register" href="#">Register</a>
                 </li>
             </ul>
         </div>

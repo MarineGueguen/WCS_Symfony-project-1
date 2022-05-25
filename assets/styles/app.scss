@@ -8,19 +8,100 @@
 
 :root {
     --main-bg-color: #F6F2FA;
-    --primary-color: #9473AE;
-    --secondary-color: #541E7E;
+    --primary-color: #6c557e;
+    --secondary-color: #381950;
+    --nav-color: #7c5d97;
     --text-dark: #2D2C2E;
     --text-light: #A29EA6;
 }
 
 body {
     background-color: var(--main-bg-color);
-    font-family: 'Roboto', sans-serif;
-    font-size: 20px;
+    font-family: 'Plus Jakarta Sans', sans-serif;
+    font-size: 1rem;
+}
+
+.nav-link {
+    color: var(--main-bg-color)
+}
+
+.nav-link:hover {
+    color: var(--secondary-color);
 }
 
 nav li {
     list-style: none;
+    font-size: 1rem;
 }
 
+nav {
+    background-color: var(--nav-color);
+}
+
+.nav-bar {
+    width: 80%;
+    height: 3rem;
+}
+
+.logo {
+    background-color: transparent;
+}
+
+.logo-brand, .logo-brand:hover {
+    font-family: 'Odibee Sans', cursive;
+    font-size: 2rem;
+    color: var(--main-bg-color);
+    padding: 0;
+}
+
+.icon {
+    width: 1.6rem;
+    height: 1.6rem;
+    margin-right: 0.5rem;
+}
+
+.user-log {
+    display: none;
+}
+
+@media screen and (max-width: 1216px) {
+    .nav-bar {
+        width: 100%;
+    }
+}
+
+@media screen and (max-width: 1056px) {
+    .nav-category {
+        display: none;
+    }
+}
+
+@media screen and (max-width: 768px) {
+    .register {
+        display: none;
+    }
+
+    .login {
+        display:none;
+    }
+
+    .user-log {
+        display: block;
+    }
+
+    .logo-brand {
+        margin-right: -1rem;
+    }
+}
+
+@media screen and (max-width: 450px) {
+    .logo {
+        display: none;
+    }
+
+    .navigation {
+        display: flex;
+        justify-content: center;
+        padding-left: 0;
+    }
+}
