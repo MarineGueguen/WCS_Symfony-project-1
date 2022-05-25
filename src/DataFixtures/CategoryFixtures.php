@@ -10,11 +10,11 @@ class CategoryFixtures extends Fixture
 {
     const CATEGORIES = [
         'Action',
-        'Aventure',
-        'Animation',
-        'Comédie',
-        'Fantastique',
-        'Horreur',
+        'Adventure',
+        'Animated',
+        'Comedy',
+        'Fantasy',
+        'Horror',
         'Romance',
     ];
 
@@ -23,8 +23,8 @@ class CategoryFixtures extends Fixture
         foreach (self::CATEGORIES as $key => $categoryName) {
             $category = new Category();
             $category->setName($categoryName);
-
             $manager->persist($category);
+            $this->addReference('category_' . $categoryName, $category);
         }
         $manager->flush();
     }
