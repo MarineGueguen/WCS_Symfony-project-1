@@ -16,9 +16,9 @@ class ProgramFixtures extends Fixture implements DependentFixtureInterface
             'category' => 'category_Action'
         ],
         [
-            'title' => "You're All Surrounded",
-            'synopsis' => 'A group of detectives comes together to solve a mysterious case that happened 11 years ago.', 
-            'category' => 'category_Adventure'
+            'title' => "Criminal Minds",
+            'synopsis' => "Adapted from the American television drama of the same name, it tells the lives of specials members of the criminal investigation department as they try to uncover cases.", 
+            'category' => 'category_Action'
         ],
         [
             'title' => 'LOVE DEATH + ROBOTS',
