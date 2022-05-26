@@ -49,18 +49,13 @@ class ProgramFixtures extends Fixture implements DependentFixtureInterface
 
     public function load(ObjectManager $manager)
     {
-        $program = new Program();
-        $program->setTitle('The Uncanny Counter');
-        $program->setSynopsis('Demon hunters called Counters capture evil spirits that have returned to earth in pursuit of eternal life.');
-        $program->setCategory($this->getReference('category_Action'));
-        $manager->persist($program);
-
         foreach (self::PROGRAMS as $series) {
             $program = new Program();
             $program->setTitle($series['title']);
             $program->setSynopsis($series['synopsis']);
             $program->setCategory($this->getReference($series['category']));
             $manager->persist($program);
+            $this->addReference('program_' . $series['title'], $program);
         }
         $manager->flush();
     }
