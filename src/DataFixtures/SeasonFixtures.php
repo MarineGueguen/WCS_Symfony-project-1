@@ -53,8 +53,8 @@ class SeasonFixtures extends Fixture implements DependentFixtureInterface
     public function load(ObjectManager $manager): void
     {
         $faker = Factory::create();
-        $number = 0;
-        for($i = 0; $i < 6; $i++) {
+        $number = 1;
+        for($i = 0; $i < 5; $i++) {
             $season = new Season();
             $season->setNumber($number++);
             $season->setYear($faker->year());
@@ -63,8 +63,8 @@ class SeasonFixtures extends Fixture implements DependentFixtureInterface
             $manager->persist($season);
             $this->addReference('program_The Uncanny Counter_season_' . $season->getNumber(), $season);
         }
-        $number = 0;
-        for($i = 0; $i < 6; $i++) {
+        $number = 1;
+        for($i = 0; $i < 5; $i++) {
             $season = new Season();
             $season->setNumber($number++);
             $season->setYear($faker->year());
@@ -73,8 +73,8 @@ class SeasonFixtures extends Fixture implements DependentFixtureInterface
             $manager->persist($season);
             $this->addReference('program_Criminal Minds_season_' . $season->getNumber(), $season);
         }
-        $number = 0;
-        for($i = 0; $i < 6; $i++) {
+        $number = 1;
+        for($i = 0; $i < 5; $i++) {
             $season = new Season();
             $season->setNumber($number++);            
             $season->setYear($faker->year());
@@ -83,8 +83,8 @@ class SeasonFixtures extends Fixture implements DependentFixtureInterface
             $manager->persist($season);
             $this->addReference('program_LOVE DEATH + ROBOTS_season_' . $season->getNumber(), $season);
         }
-        $number = 0;
-        for($i = 0; $i < 6; $i++) {
+        $number = 1;
+        for($i = 0; $i < 5; $i++) {
             $season = new Season();
             $season->setNumber($number++);            
             $season->setYear($faker->year());
@@ -93,8 +93,8 @@ class SeasonFixtures extends Fixture implements DependentFixtureInterface
             $manager->persist($season);
             $this->addReference('program_Strong Woman Bong Soon_season_' . $season->getNumber(), $season);
         }
-        $number = 0;
-        for($i = 0; $i < 6; $i++) {
+        $number = 1;
+        for($i = 0; $i < 5; $i++) {
             $season = new Season();
             $season->setNumber($number++);            
             $season->setYear($faker->year());
@@ -103,8 +103,8 @@ class SeasonFixtures extends Fixture implements DependentFixtureInterface
             $manager->persist($season);
             $this->addReference('program_Doom at your service_season_' . $season->getNumber(), $season);
         }
-        $number = 0;
-        for($i = 0; $i < 6; $i++) {
+        $number = 1;
+        for($i = 0; $i < 5; $i++) {
             $season = new Season();
             $season->setNumber($number++);            
             $season->setYear($faker->year());
@@ -113,8 +113,8 @@ class SeasonFixtures extends Fixture implements DependentFixtureInterface
             $manager->persist($season);
             $this->addReference('program_Kingdom_season_' . $season->getNumber(), $season);
         }
-        $number = 0;
-        for($i = 0; $i < 6; $i++) {
+        $number = 1;
+        for($i = 0; $i < 5; $i++) {
             $season = new Season();
             $season->setNumber($number++);
             $season->setYear($faker->year());
