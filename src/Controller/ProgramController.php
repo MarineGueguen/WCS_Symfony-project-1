@@ -9,10 +9,10 @@ use Symfony\Component\Routing\Annotation\Route;
 use App\Repository\ProgramRepository;
 use App\Repository\SeasonRepository;
 
-
+#[Route('/program', name: 'program_')]
 class ProgramController extends AbstractController
 {
-    #[Route('/program/', name: 'program_index')]
+    #[Route('/', name: 'index')]
     public function index(ProgramRepository $programRepository): Response
     {   
         $programs = $programRepository->findAll();
@@ -21,7 +21,7 @@ class ProgramController extends AbstractController
         ]);
     }
 
-    #[Route('/program/{id}', requirements: ['id'=>'\d+'], methods: ['GET'], name: 'program_show')]
+    #[Route('/{id}', requirements: ['id'=>'\d+'], methods: ['GET'], name: 'show')]
     public function show(int $id, ProgramRepository $programRepository, SeasonRepository $seasonRepository): Response
     {
         $program = $programRepository->findOneBy(['id' => $id]);
@@ -35,7 +35,7 @@ class ProgramController extends AbstractController
         ]);
     }
 
-    #[Route('/program/{programId}/season/{seasonId}', requirements: ['programId'=>'\d+', 'seasonId'=>'\d+'], methods: ['GET'], name: 'program_season_show')]
+    #[Route('/{programId}/season/{seasonId}', requirements: ['programId'=>'\d+', 'seasonId'=>'\d+'], methods: ['GET'], name: 'season_show')]
     public function showSeason(int $programId, int $seasonId, SeasonRepository $seasonRepository, EpisodeRepository $episodeRepository): Response
     {
         $season = $seasonRepository->findOneBy(['program' => $programId, 'id' => $seasonId]);
