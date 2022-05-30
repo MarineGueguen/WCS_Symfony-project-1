@@ -11,45 +11,6 @@ use Faker\Factory;
 
 class SeasonFixtures extends Fixture implements DependentFixtureInterface
 {
-    // const SEASONS = [
-    //     [
-    //         'program' => 'program_The Uncanny Counter',
-    //         'number' => 1
-    //     ],
-    //     [
-    //         'program' => 'program_The Uncanny Counter',
-    //         'number' => 2
-    //     ],
-    //     [
-    //         'program' => 'program_Criminal Minds',
-    //         'number' => 1
-    //     ],
-    //     [
-    //         'program' => 'program_Criminal Minds',
-    //         'number' => 2
-    //     ],
-    //     [
-    //         'program' => 'program_Criminal Minds',
-    //         'number' => 3
-    //     ],
-    //     [
-    //         'program' => 'program_Strong Woman Bong Soon',
-    //         'number' => 1
-    //     ],
-    //     [
-    //         'program' => 'program_Kingdom',
-    //         'number' => 1
-    //     ],
-    //     [
-    //         'program' => 'program_Kingdom',
-    //         'number' => 2
-    //     ],
-    //     [
-    //         'program' => 'program_Descendants of the Sun',
-    //         'number' => 1
-    //     ],
-    // ];
-
     public function load(ObjectManager $manager): void
     {
         $faker = Factory::create();

@@ -10,49 +10,6 @@ use Faker\Factory;
 
 class EpisodeFixtures extends Fixture implements DependentFixtureInterface
 {
-    // const EPISODES = [
-    //     [
-    //         'season' => 'program_The Uncanny Counter_season_1',
-    //         'title' => 'bla bla bla',
-    //         'number' => '1',
-    //     ],
-    //     [
-    //         'season' => 'program_The Uncanny Counter_season_1',
-    //         'title' => 'bla bla bla',
-    //         'number' => '2',
-    //     ],
-    //     [
-    //         'season' => 'program_The Uncanny Counter_season_1',
-    //         'title' => 'bla bla bla',
-    //         'number' => '3',
-    //     ],
-    //     [
-    //         'season' => 'program_The Uncanny Counter_season_1',
-    //         'title' => 'bla bla bla',
-    //         'number' => '4',
-    //     ],
-    //     [
-    //         'season' => 'program_The Uncanny Counter_season_2',
-    //         'title' => 'bla bla bla',
-    //         'number' => '1',
-    //     ],
-    //     [
-    //         'season' => 'program_The Uncanny Counter_season_2',
-    //         'title' => 'bla bla bla',
-    //         'number' => '2',
-    //     ],
-    //     [
-    //         'season' => 'program_The Uncanny Counter_season_2',
-    //         'title' => 'bla bla bla',
-    //         'number' => '3',
-    //     ],
-    //     [
-    //         'season' => 'program_The Uncanny Counter_season_2',
-    //         'title' => 'bla bla bla',
-    //         'number' => '4',
-    //     ],
-    // ];
-
     public function load(ObjectManager $manager): void
     {
         $faker = Factory::create();
