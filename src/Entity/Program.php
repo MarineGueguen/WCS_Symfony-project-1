@@ -23,6 +23,11 @@ class Program
     #[Assert\Length(max: 255)]
     private $title;
 
+    #[ORM\Column(type: 'string', length: 255)]
+    #[Assert\NotBlank]
+    #[Assert\Length(max: 255)]
+    private $country;
+
     #[ORM\Column(type: 'text')]
     #[Assert\NotBlank]
     #[Assert\Regex(
@@ -60,6 +65,18 @@ class Program
     public function setTitle(string $title): self
     {
         $this->title = $title;
+
+        return $this;
+    }
+
+    public function getCountry(): ?string
+    {
+        return $this->country;
+    }
+
+    public function setCountry(string $country): self
+    {
+        $this->country = $country;
 
         return $this;
     }
