@@ -138,7 +138,6 @@ class Program
     public function removeSeason(Season $season): self
     {
         if ($this->seasons->removeElement($season)) {
-            // set the owning side to null (unless already changed)
             if ($season->getProgram() === $this) {
                 $season->setProgram(null);
             }
