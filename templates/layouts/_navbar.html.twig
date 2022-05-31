@@ -2,14 +2,14 @@
     <div class="container-fluid nav-bar">
         <div class="col-lg-8 d-flex justify-content-start navigation">
             <div class="col-md-3 col-xs-2 logo">
-                <a class="navbar-brand logo-brand" href="#">Wildseries</a>
+                <a class="navbar-brand logo-brand" href="{{ path('app_index') }}">Wildseries</a>
             </div>
             <ul class="d-flex justify-xs-content-start justify-md-content-end my-auto navigation">
                 <li class="nav-item">
-                    <a class="nav-link" href="#"><img class="icon" src="{{ asset('build/images/home-dark.svg') }}"><span class="nav-category">Home</span></a>
+                    <a class="nav-link" href="{{ path('app_index') }}"><img class="icon" src="{{ asset('build/images/home-dark.svg') }}"><span class="nav-category">Home</span></a>
                 </li>
                 <li class="nav-item">
-                    <a class="nav-link" href="#"><img class="icon" src="{{ asset('build/images/movies-dark.svg') }}"><span class="nav-category">Series</span></a>
+                    <a class="nav-link" href="{{ path('program_index') }}"><img class="icon" src="{{ asset('build/images/movies-dark.svg') }}"><span class="nav-category">Series</span></a>
                 </li>
                 <li class="nav-item">
                     <a class="nav-link" href="#"><img class="icon" src="{{ asset('build/images/actors-dark.png') }}"><span class="nav-category">Actors</span></a>
