@@ -21,12 +21,11 @@ class Season
     private $program;
 
     #[ORM\Column(type: 'integer')]
-    #[Assert\Type('interger')]
+    #[Assert\Type('integer')]
     #[Assert\NotBlank]
     private $number;
 
     #[ORM\Column(type: 'integer')]
-    #[Assert\Type('integer')]
     #[Assert\Regex('/\d{4}/')]
     #[Assert\NotBlank]
     private $year;

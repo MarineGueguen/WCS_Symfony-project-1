@@ -4,6 +4,7 @@ namespace App\Controller;
 
 use App\Entity\Season;
 use App\Form\SeasonType;
+use App\Repository\EpisodeRepository;
 use App\Repository\SeasonRepository;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\HttpFoundation\Request;
@@ -67,9 +68,12 @@ class SeasonController extends AbstractController
     }
 
     #[Route('/{id}', name: 'app_season_delete', methods: ['POST'])]
-    public function delete(Request $request, Season $season, SeasonRepository $seasonRepository): Response
+    public function delete(Request $request, Season $season, SeasonRepository $seasonRepository, EpisodeRepository $episodeRepository): Response
     {
         if ($this->isCsrfTokenValid('delete'.$season->getId(), $request->request->get('_token'))) {
+            foreach ($season->getEpisodes() as $episode) {
+                $episodeRepository->remove($episode, true);
+            }
             $seasonRepository->remove($season, true);
         }
 
