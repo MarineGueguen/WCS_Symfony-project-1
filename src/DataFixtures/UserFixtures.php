@@ -26,7 +26,29 @@ class UserFixtures extends Fixture
             'contributorpassword'
         );
         $contributor->setPassword($hashedPassword);
+        $this->addReference('creator_1', $contributor);
         $manager->persist($contributor);
+
+        $contributor1 = new User();
+        $contributor1->setEmail('contributor1@monsite.com');
+        $contributor1->setRoles(['ROLE_CONTRIBUTOR']);
+        $hashedPassword = $this->passwordHasher->hashPassword(
+            $contributor1,
+            'contributorpassword'
+        );
+        $contributor1->setPassword($hashedPassword);
+        $this->addReference('creator_2' . $contributor1->getId(), $contributor1);
+        $manager->persist($contributor1);
+
+        $user = new User();
+        $user->setEmail('user@monsite.com');
+        $user->setRoles(['ROLE_USER']);
+        $hashedPassword = $this->passwordHasher->hashPassword(
+            $user,
+            'userpassword'
+        );
+        $user->setPassword($hashedPassword);
+        $manager->persist($user);
 
         $admin = new User();
         $admin->setEmail('admin@monsite.com');
@@ -36,6 +58,7 @@ class UserFixtures extends Fixture
             'adminpassword'
         );
         $admin->setPassword($hashedPassword);
+        $this->addReference('creator_3' . $admin->getId(), $admin);
         $manager->persist($admin);
 
         $manager->flush();

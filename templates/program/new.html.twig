@@ -3,8 +3,9 @@
 {% block title %}New program{% endblock %}
 
 {% block body %}
-{{ form_start(form) }}
-    {{ form_widget(form) }}
-    <button type="submit">Add program</button>
-{{ form_end(form) }}
+    <h1>Create new Program</h1>
+
+    {{ include('program/_form.html.twig') }}
+
+    <a href="{{ path('program_index') }}">back to list</a>
 {% endblock %}

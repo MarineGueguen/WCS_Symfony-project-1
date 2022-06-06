@@ -58,7 +58,7 @@ class ProgramFixtures extends Fixture implements DependentFixtureInterface
             'title' => 'Descendants of the Sun', 
             'synopsis' => "A love story develops between Captain Yoo Shi Jin, from South Korean Special Forces and Doctor Kang Mo Yeon, who works as a Surgeon at Haesung Hospital in Seoul. They will find themselves in the middle of great events and deadly dangers, both in their Motherland and in the fictitious, war-torn country of Urk.", 
             'category' => 'category_Romance',
-            'country' => 'South Korea'
+            'country' => 'South Korea',
         ],
     ];
 
@@ -72,6 +72,7 @@ class ProgramFixtures extends Fixture implements DependentFixtureInterface
             $program->setSynopsis($series['synopsis']);
             $program->setCategory($this->getReference($series['category']));
             $program->setCountry($series['country']);
+            $program->setOwner($this->getReference('creator_' . random_int(1,3)));
             $manager->persist($program);
             $this->addReference('program_' . $program->getTitle(), $program);
         }
@@ -80,6 +81,6 @@ class ProgramFixtures extends Fixture implements DependentFixtureInterface
 
     public function getDependencies()
     {
-        return [CategoryFixtures::class,];
+        return [CategoryFixtures::class, UserFixtures::class,];
     }
 }
