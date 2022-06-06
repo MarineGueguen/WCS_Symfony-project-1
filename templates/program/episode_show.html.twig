@@ -13,7 +13,7 @@
         </div>
     </div>
 
-    {% if app.user %}
+    {% if is_granted("ROLE_CONTRIBUTOR") %}
     {{ include('comment/_form.html.twig') }}
     {% endif %}
 
@@ -22,6 +22,11 @@
         {% for comment in comments %}
         <h2>Comment posted by {{ comment.author.email }}</h2>
         <p>{{ comment.comment }}</p>
+        {% if is_granted("ROLE_ADMIN") or app.user == comment.author %}
+            {{ include('comment/_delete_form.html.twig') }} 
+        {% endif %}
+        {% else %}
+        Aucun commentaire posté
         {% endfor %}
     </div>
 

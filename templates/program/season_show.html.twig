@@ -10,7 +10,7 @@
             <p>{{ program.synopsis }}</p>
             <p>List of episodes :</p>
             {% for episode in episodes %} 
-            <p><a href="{{ path('program_episode_show', { slug: program.slug, season: season.id, episode_slug: episode.slug }) }}">Episode {{ episode.number }} : {{ episode.title }}</a></p>
+            <p><a href="{{ path('program_episode_show', { 'slug': program.slug, 'season': season.id, 'episode_slug': episode.slug }) }}">Episode {{ episode.number }} : {{ episode.title }}</a></p>
             {% endfor %}
         </div>
     </div>
