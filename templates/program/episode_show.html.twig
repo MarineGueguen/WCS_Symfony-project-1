@@ -12,6 +12,19 @@
             <p>Synopsis : {{ episode.synopsis }}</p>
         </div>
     </div>
+
+    {% if app.user %}
+    {{ include('comment/_form.html.twig') }}
+    {% endif %}
+
+    <div>
+        <h1>Commments</h1>
+        {% for comment in comments %}
+        <h2>Comment posted by {{ comment.author.email }}</h2>
+        <p>{{ comment.comment }}</p>
+        {% endfor %}
+    </div>
+
     <a href="{{ path('program_season_show', { slug: program.slug, season: season.id }) }}">
         Retour à la fiche de la saison
     </a>

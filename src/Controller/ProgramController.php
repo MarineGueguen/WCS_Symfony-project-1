@@ -9,7 +9,10 @@ use App\Repository\ProgramRepository;
 use App\Entity\Program;
 use App\Entity\Season;
 use App\Entity\Episode;
+use App\Entity\Comment;
 use App\Form\ProgramType;
+use App\Form\CommentType;
+use App\Repository\CommentRepository;
 use App\Service\Slugify;
 use Sensio\Bundle\FrameworkExtraBundle\Configuration\ParamConverter;
 use Symfony\Component\HttpFoundation\Request;
@@ -81,17 +84,29 @@ class ProgramController extends AbstractController
         ]);
     }
 
-    #[Route('/{slug}/season/{season}/episode/{episode_slug}', requirements: ['season'=>'\d+'], methods: ['GET'], name: 'episode_show')]
+    #[Route('/{slug}/season/{season}/episode/{episode_slug}', requirements: ['season'=>'\d+'], methods: ['GET', 'POST'], name: 'episode_show')]
     #[ParamConverter('episode', options: ['mapping' => ['episode_slug' => 'slug']])]
-    public function showEpisode(Program $program, Season $season, Episode $episode)
+    public function showEpisode(Request $request, Program $program, Season $season, Episode $episode, CommentRepository $commentRepository)
     {
         if (!$episode) {
             throw $this->createNotFoundException('The product does not exist');
         }
-        return $this->render('program/episode_show.html.twig', [
+        $comment = new Comment();
+        $form = $this->createForm(CommentType::class, $comment);
+        $form->handleRequest($request);
+        if ($form->isSubmitted()  && $form->isValid()) {
+            $comment->setAuthor($this->getUser());
+            $comment->setEpisode($episode);
+            $commentRepository->add($comment, true); 
+            return $this->redirectToRoute('program_episode_show', ['slug' => $program->getSlug(), 'season' => $season->getId(), 'episode_slug' => $episode->getSlug()]);
+        }
+        $comments = $commentRepository->findBy(['episode' => $episode->getId()]);
+        return $this->renderForm('program/episode_show.html.twig', [
             'program' => $program,
             'season' => $season,
             'episode' => $episode,
+            'form' => $form,
+            'comments' => $comments,
         ]);
     }
 }
