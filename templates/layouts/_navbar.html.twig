@@ -19,7 +19,12 @@
         <div class="col-md-3">
             <ul class="d-md-flex justify-content-end my-auto">
                 <li class="nav-item">
-                    <a class="nav-link" href="#"><img class="icon user-log" src="{{ asset('build/images/login-dark.png') }}"><span class="login">Login</span></a>
+                    {% if app.user %}
+                        {{ app.user.email }}
+                        <a class="nav-link" href="{{ path('app_logout') }}"><img class="icon user-log" src="{{ asset('build/images/login-dark.png') }}"><span class="login">Logout</span></a>
+                    {% else %}
+                        <a class="nav-link" href="{{ path('app_login') }}"><img class="icon user-log" src="{{ asset('build/images/login-dark.png') }}"><span class="login">Login</span></a>
+                    {% endif %}
                 </li>
                 <li class="nav-item">
                     <a class="nav-link register" href="#">Register</a>
@@ -28,3 +33,4 @@
         </div>
     </div>
 </nav>
+
