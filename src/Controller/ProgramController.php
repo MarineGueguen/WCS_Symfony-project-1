@@ -10,6 +10,9 @@ use App\Entity\Program;
 use App\Entity\Season;
 use App\Entity\Episode;
 use App\Form\ProgramType;
+use App\Service\Slugify;
+use Sensio\Bundle\FrameworkExtraBundle\Configuration\Entity;
+use Sensio\Bundle\FrameworkExtraBundle\Configuration\ParamConverter;
 use Symfony\Component\HttpFoundation\Request;
 
 #[Route('/program', name: 'program_')]
@@ -25,12 +28,14 @@ class ProgramController extends AbstractController
     }
 
     #[Route('/new', name: 'new')]
-    public function new(Request $request, ProgramRepository $programRepository) : Response
+    public function new(Request $request, ProgramRepository $programRepository, Slugify $slugify) : Response
     {
         $program = new Program();
         $form = $this->createForm(ProgramType::class, $program);
         $form->handleRequest($request);
         if ($form->isSubmitted()  && $form->isValid()) {
+            $slug = $slugify->generate($program->getTitle());
+            $program->setSlug($slug);
             $programRepository->add($program, true); 
             return $this->redirectToRoute('program_index');
         }
@@ -40,7 +45,7 @@ class ProgramController extends AbstractController
         ]);
     }
 
-    #[Route('/{program}', requirements: ['id'=>'\d+'], methods: ['GET'], name: 'show')]
+    #[Route('/{slug}', methods: ['GET'], name: 'show')]
     public function show(Program $program): Response
     {
         if (!$program) {
@@ -53,7 +58,7 @@ class ProgramController extends AbstractController
         ]);
     }
 
-    #[Route('/{program}/season/{season}', requirements: ['program'=>'\d+', 'season'=>'\d+'], methods: ['GET'], name: 'season_show')]
+    #[Route('/{slug}/season/{season}', requirements: ['season'=>'\d+'], methods: ['GET'], name: 'season_show')]
     public function showSeason(Program $program, Season $season): Response
     {
         if (!$season) {
@@ -67,7 +72,8 @@ class ProgramController extends AbstractController
         ]);
     }
 
-    #[Route('/{program}/season/{season}/episode/{episode}', requirements: ['program'=>'\d+', 'season'=>'\d+', 'episode'=>'\d+'], methods: ['GET'], name: 'episode_show')]
+    #[Route('/{slug}/season/{season}/episode/{episode_slug}', requirements: ['season'=>'\d+'], methods: ['GET'], name: 'episode_show')]
+    #[ParamConverter('episode', options: ['mapping' => ['episode_slug' => 'slug']])]
     public function showEpisode(Program $program, Season $season, Episode $episode)
     {
         if (!$episode) {

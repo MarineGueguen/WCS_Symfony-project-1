@@ -3,12 +3,20 @@
 namespace App\DataFixtures;
 
 use App\Entity\Program;
+use App\Service\Slugify;
 use Doctrine\Bundle\FixturesBundle\Fixture;
 use Doctrine\Common\DataFixtures\DependentFixtureInterface;
 use Doctrine\Persistence\ObjectManager;
 
 class ProgramFixtures extends Fixture implements DependentFixtureInterface
 {
+    private Slugify $slugify;
+
+    public function __construct(Slugify $slugify)
+    {
+        $this->slugify = $slugify;
+    }
+
     const PROGRAMS = [
         [
             'title' => 'The Uncanny Counter',
@@ -59,6 +67,8 @@ class ProgramFixtures extends Fixture implements DependentFixtureInterface
         foreach (self::PROGRAMS as $series) {
             $program = new Program();
             $program->setTitle($series['title']);
+            $slug = $this->slugify->generate($series['title']);
+            $program->setSlug($slug);
             $program->setSynopsis($series['synopsis']);
             $program->setCategory($this->getReference($series['category']));
             $program->setCountry($series['country']);
